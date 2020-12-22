@@ -59,15 +59,15 @@ function setup(){
     box11 = new CBox(790, 350);
 
     // level 3 _ platform 1 _ orange boxes
-    box12 = new OBox(580, 220);
-    box13 = new OBox(640, 220);
-    box14 = new OBox(700, 220);
-    box15 = new OBox(760, 220);
+    box12 = new OBox(580, 270);
+    box13 = new OBox(640, 270);
+    box14 = new OBox(700, 270);
+    box15 = new OBox(760, 270);
 
     // level 4 _ platform 1 _ lime boxes
-    box16 = new LBox(610, 90);
-    box17 = new LBox(670, 90);
-    box18 = new LBox(730, 90);
+    box16 = new LBox(610, 200);
+    box17 = new LBox(670, 200);
+    box18 = new LBox(730, 200);
 
     // bottom level _ platform 2 _ cyan boxes
     cube1 = new OBox(950, 280);
@@ -84,7 +84,7 @@ function setup(){
 
     cube10 = new CBox(1070, 80);
 
-    rope = new Rope(player.body, {x:200, y:400});
+    rope = new Rope(player.body, {x:200, y:300});
 }
 
 function draw(){
@@ -152,6 +152,6 @@ function mouseReleased(){
 
 function keyPressed(){
     if(keyCode === 32){
-        rope = new Rope(player.body, {x:200, y:400});
+        rope = new Rope(player.body, {x:200, y:300});
     }
 }

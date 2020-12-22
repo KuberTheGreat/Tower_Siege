@@ -10,19 +10,33 @@ class PBox{
 
         this.width = 50;
         this.height = 70;
+
+        this.visiblity = 255;
     }
 
     display(){
-        var pos = this.body.position;
+        if(this.body.speed < 5){
+            var pos = this.body.position;
 
-        push();
+            push();
 
-        translate(pos.x, pos.y);
+            translate(pos.x, pos.y);
 
-        rectMode(CENTER);
-        fill(219, 47, 219);
-        rect(0, 0, this.width, this.height);
+            rectMode(CENTER);
+            fill(219, 47, 219);
+            rect(0, 0, this.width, this.height);
 
-        pop();
+            pop();
+        }
+        else{
+            World.remove(world, this.body);
+
+            push();
+
+            this.visiblity = this.visiblity - 5;
+            tint(255, this.visiblity);
+
+            pop();
+        }
     }
 }
