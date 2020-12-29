@@ -14,6 +14,10 @@ var player;
 
 var rope;
 
+var bg;
+
+var score = 0;
+
 // bottom level variables of platform 1
 var box1, box2, box3, box4, box5, box6;
 // 2nd level variables
@@ -85,12 +89,26 @@ function setup(){
     cube10 = new CBox(1070, 80);
 
     rope = new Rope(player.body, {x:200, y:300});
+
+    getTime();
 }
 
 function draw(){
     background("brown");
 
+    noStroke();
+    textSize(35);
+    fill("white");
+    text("score: " + score, width - 300, 50);
+
+    if(score === 560){
+        fill("blue");
+        text("You Won!", width - 500, 50);
+    }
+
     Engine.update(engine);
+
+    stroke(3);
 
     ground.display();
 
@@ -134,6 +152,42 @@ function draw(){
 
     cube10.display();
 
+    // scoring
+    box1.score();
+    box2.score();
+    box3.score();
+    box4.score();
+    box5.score();
+    box6.score();
+
+    box7.score();
+    box8.score();
+    box9.score();
+    box10.score();
+    box11.score();
+
+    box12.score();
+    box13.score();
+    box14.score();
+    box15.score();
+
+    box16.score();
+    box17.score();
+    box18.score();
+
+    cube1.score();
+    cube2.score();
+    cube3.score();
+    cube4.score();
+    cube5.score();
+
+    cube6.score();
+    cube7.score();
+    cube8.score();
+    cube9.score();
+
+    cube10.score();
+
     rope.display();
 
     textSize(20);
@@ -153,5 +207,24 @@ function mouseReleased(){
 function keyPressed(){
     if(keyCode === 32){
         rope = new Rope(player.body, {x:200, y:300});
+    }
+}
+
+// I tried to make the mechanism of the changing background
+// But that didnt work well due to the some error of the website
+async function getTime(){
+    var response = await fetch("http://worldtimeapi.org/api/timezone/Asia/Kolkata");
+
+    var responseType = await response.json();
+
+    var dt = responseType.datetime;
+
+    var hour = dt.slice(11, 13);
+
+    if(hour > 6 && hour < 18){
+        bg = color(250, 255, 117);
+    }
+    else{
+        bg = color(88, 88, 82);
     }
 }
